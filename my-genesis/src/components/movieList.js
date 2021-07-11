@@ -34,9 +34,9 @@ export const MovieList = () => {
 
     const renderMovieList = () => (
         movieData.map((movie, index) => ( 
-            <div  className="movie-card" key={index} >
+            <div className="movie-card" key={index} >
               <img src={movie.Poster} alt={ `${movie.Title} poster` } />
-             <h5>{movie.Title}</h5>
+             <h4 style={{color: "red"}}>{movie.Title}</h4>
              <button onClick={ () => logMovieInfo(movie.imdbID)}>show details</button>
             </div>
         ))
