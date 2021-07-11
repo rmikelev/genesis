@@ -1,40 +1,53 @@
-import { useState } from 'react';
+import {
+    useState,
+    useEffect
+} from 'react';
+import MovieService from '../services/movie.service';
 
-export const MovieList = ({ movies })=> {
+export const MovieList = () => {
     const [movieData, setMovieData] = useState();
+    const [selectedMovie, setSelectedMovie] = useState();
+    const movieService = new MovieService();
 
     useEffect(() => {
-        setMovieData(movies.map((movie)) => {
-            return {
-                showMovieData: false,
-                data: movie
-            }        
-        })
+        getMoviesByTitle('John Wick');
     }, [])
 
+    const getMoviesByTitle = async (title) => {
+        const movieList = await movieService.getMoviesByTile(title);
 
-    const logMovieInfo = (movie) => {
-        console.log (`${movie.Title}`. movie);
+        setMovieData(movieList.Search);
     }
+
+    const getMovieById = async (id) => {
+        const movie = await movieService.getMovieById(id);
+
+        setSelectedMovie(movie);
+    }
+
+
+    const logMovieInfo = (id) => {
+        getMovieById(id);
+
+        console.log("SelectedMovie", selectedMovie);
+    }
+
     const renderMovieList = () => (
-        movies.map((movie, index) => (
-            <div className="movie-card" key={index}>
-                <img src={movie.Poster} alt={`${movie.Title} poster`} />
-                <div>
-                <h5></h5>
-                <button
-                    onClick={() => logMovieInfo(movie)}
-                >Log Movie</button>
-                </div>
+        movieData.map((movie, index) => ( 
+            <div  className="movie-card" key={index} >
+              <img src={movie.Poster} alt={ `${movie.Title} poster` } />
+             <h5>{movie.Title}</h5>
+             <button onClick={ () => logMovieInfo(movie.imdbID)}>show details</button>
             </div>
-        )),
+        ))
     );
 
+
     return (
-        <div className="movie-list-container">
-            { console.log(movieData)}
-            { renderMovieList() }
+        <div className = "movie-list-container"> 
+            <h1>Movie List</h1>
+            { console.log(movieData) }
+            { movieData && renderMovieList() }
         </div>
-    
     )
 }
