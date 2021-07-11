@@ -5,25 +5,25 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 
-const MovieCard = (props) =>
-{
-    return (
-        <div>
-            <h1>Hello {props.name}</h1>
-            <h2>You are {props.age} years old</h2>
-        </div>
-    )
-}
+// const MovieCard = (props) =>
+// {
+//     return (
+//         <div>
+//             <h1>Hello {props.name}</h1>
+//             <h2>You are {props.age} years old</h2>
+//         </div>
+//     )
+// }
 
-ReactDOM.render
-(
-    <div>
-        <MovieCard name= "Michael"  age={40} />
-        <MovieCard name= "Abbie" age={25} />
-    </div>,
-    document.getElementById('root')
+// ReactDOM.render
+// (
+//     <div>
+//         <MovieCard name= "Michael"  age={40} />
+//         <MovieCard name= "Abbie" age={25} />
+//     </div>,
+//     document.getElementById('root')
 
-)
+// )
 
 
 
