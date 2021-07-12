@@ -11,7 +11,7 @@ export const MovieList = () => {
 
     useEffect(() => {
         getMoviesByTitle('John Wick');
-    }, [])
+    },[] )
 
     const getMoviesByTitle = async (title) => {
         const movieList = await movieService.getMoviesByTile(title);
@@ -36,8 +36,8 @@ export const MovieList = () => {
         movieData.map((movie, index) => ( 
             <div className="movie-card" key={index} >
               <img src={movie.Poster} alt={ `${movie.Title} poster` } />
-             <h4 style={{color: "red"}}>{movie.Title}</h4>
-             <button onClick={ () => logMovieInfo(movie.imdbID)}>show details</button>
+             <h4 style={{color: "Blue"}}>{movie.Title}</h4>
+             <button className = "button" onClick={ () => logMovieInfo(movie.imdbID)}>show details</button>
             </div>
         ))
     );

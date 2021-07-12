@@ -1,0 +1,14 @@
+body {
+    background-color: #f3f9e1;
+    /* color: white; */
+    padding: 40px;
+    font-family: Arial;
+    text-align: center;
+  }
+
+  .button {
+      background-color: purple;
+      color: white;
+      padding: 10px;
+      margin-bottom: 20px;
+  }
